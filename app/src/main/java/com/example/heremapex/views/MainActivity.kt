@@ -275,9 +275,10 @@ class MainActivity : AppCompatActivity() {
                     information = ""
                     createRoute(1)
                     createRoute(2)
+                    isMarkerOnMap = false
                 }
                 .setNegativeButton("OK") { _, _ ->
-                    isMarkerOnMap = false
+                    isMarkerOnMap = true
                 }
                 .show()
         })
