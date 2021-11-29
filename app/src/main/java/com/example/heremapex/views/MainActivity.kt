@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         private var transport = "Car"
         private var information = ""
         private var isFirstClick = true
+        private var isMarkerOnMap = false
     }
 
 
@@ -226,14 +227,15 @@ class MainActivity : AppCompatActivity() {
                                 Map.Animation.NONE
                             )
                             setMarker(it.latitude, it.longitude)
+
                             mMapFragment!!.mapGesture!!.addOnGestureListener(object :
                                 MapGesture.OnGestureListener.OnGestureListenerAdapter() {
                                 override fun onTapEvent(p0: PointF): Boolean {
                                     val geo = mMap!!.pixelToGeo(p0)
-                                    if (!isFirstClick)
+                                    if (!isFirstClick && isMarkerOnMap)
                                         dropMarker()
                                     isFirstClick = false
-
+                                    isMarkerOnMap = true
                                     setMarker(geo!!.latitude, geo!!.longitude)
                                     return false
                                 }
@@ -275,6 +277,7 @@ class MainActivity : AppCompatActivity() {
                     createRoute(2)
                 }
                 .setNegativeButton("OK") { _, _ ->
+                    isMarkerOnMap = false
                 }
                 .show()
         })
