@@ -49,5 +49,8 @@ dependencies {
     implementation 'org.locationtech.jts:jts-core:1.15.0'
     implementation 'com.google.code.gson:gson:2.8.0'
 
-
+// ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")
 }
